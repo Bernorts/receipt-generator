@@ -1,6 +1,6 @@
 # Receipt Generator
 
-## Automation tests
+## Automatic tests
 
 Run the tests with: `rspec spec`
 

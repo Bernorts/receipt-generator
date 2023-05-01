@@ -28,7 +28,6 @@ class ReceiptGenerator
     
         unless is_exempt
             basic_tax = calculate_tax(price, basic_rate)
-            
         end
 
         basic_tax
@@ -48,7 +47,7 @@ class ReceiptGenerator
     def generate_receipt(input_file_path)
 
         # Read input interactively
-        # puts "Enter amount of items:"
+        # puts "Enter number of items:"
         # items_num = gets.chomp.to_i
 
         # for i in 1..items_num do
@@ -65,16 +64,18 @@ class ReceiptGenerator
         items.each do |item|
             item_price = get_price(item)
             item_taxes = 0
-            item_total_taxes = 0
             item_taxes += calculate_basic_tax(item, item_price)
             item_taxes += calculate_import_tax(item, item_price)
+
             item_amount = item.split()[0].to_f
             item_total_taxes = item_amount * item_taxes
             @total_taxes += item_total_taxes
             item_total_cost = item_amount * (item_price + item_taxes)
             @total_amount += item_total_cost
+
             delimiter = "at"
             item_desc = "#{item.split(/\b#{delimiter}\b/)[0]}".rstrip
+
             print "#{item_desc}: #{format_amount(item_total_cost)}\n"
         end
 
