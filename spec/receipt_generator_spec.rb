@@ -1,4 +1,4 @@
-require_relative '../receipt_generator' 
+require_relative '../src/receipt_generator' 
 
 describe ReceiptGenerator do
     context "For Input 1" do 
